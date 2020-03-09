@@ -21,6 +21,7 @@ function Product(name, imageUrl){
 }
 
 
+
 new Product('Bag', 'img/bag.jpg');
 new Product('Banana', 'img/banana.jpg');
 new Product('Boots', 'img/boots.jpg');
@@ -41,7 +42,9 @@ new Product('USB', 'img/usb.gif');
 new Product('Water Can', 'img/water-can.jpg');
 new Product('Wine Glass', 'img/wine-glass.jpg');
 
-
+allProducts[0].timesViewed = 1;
+allProducts[1].timesViewed = 1;
+allProducts[2].timesViewed = 1;
 
 function productWasClicked(event){
   totalClicks++;
@@ -74,31 +77,37 @@ function productWasClicked(event){
   productIndex3 = nextProductIndex3;
 
   productElements[0].src = allProducts[productIndex1].imageUrl;
+  allProducts[productIndex1].timesViewed++;
   productElements[1].src = allProducts[productIndex2].imageUrl;
+  allProducts[productIndex2].timesViewed++;
   productElements[2].src = allProducts[productIndex3].imageUrl;
+  allProducts[productIndex3].timesViewed++;
 
-
+  console.log(totalClicks);
   if(totalClicks >= clickRounds){
-
-    var ulElement = document.getElementById('voteList');
-
-
     for (var i = 0; i < allProducts.length; i++){
-
-      var productVoteData = document.createElement('li');
-
-      productVoteData.textContent = `this is the thing we need to add ${allProducts[i]}`;
-      ulElement.appendChild(productVoteData);
-
-
-
+      productData(i);
     }
-
   }
+}
+var ulElement = document.getElementById('voteList');
 
+function productData(index){
+  var productVoteData = document.createElement('li');
+  productVoteData.textContent = allProducts[index].name + allProducts[index].timesViewed + allProducts[index].timesClicked;
+  ulElement.appendChild(productVoteData);
 }
 
-for(var i = 0; i < productElements.length; i++){
+
+
+
+
+
+
+
+
+
+for(var j = 0; j < productElements.length; j++){
   console.log('this is the event listener for the click on product event');
-  productElements[i].addEventListener('click', productWasClicked);
+  productElements[j].addEventListener('click', productWasClicked);
 }
