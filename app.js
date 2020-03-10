@@ -63,7 +63,7 @@ function productWasClicked(event){
   }
 
   var nextProductIndex2 = Math.floor(Math.random() * allProducts.length);
-  while((nextProductIndex2 === productIndex2) || (nextProductIndex2 === nextProductIndex1)){
+  while((nextProductIndex2 === productIndex2) || (nextProductIndex3 === nextProductIndex2)){
     nextProductIndex2 = Math.floor(Math.random() * allProducts.length);
   }
 
@@ -88,13 +88,22 @@ function productWasClicked(event){
     for (var i = 0; i < allProducts.length; i++){
       productData(i);
     }
+    for (var k = 0; k < productElements.length; k++)
+      productElements[k].removeEventListener('click', productWasClicked);
   }
+
+//   if(totalClicks >= clickRounds){
+//     var voteList = document.getElementById('voteList')[0];
+//     if(voteList.firstElementChild){
+//       voteList.firstElementChild.remove();
+//     }
+//   }
 }
 var ulElement = document.getElementById('voteList');
 
 function productData(index){
   var productVoteData = document.createElement('li');
-  productVoteData.textContent = allProducts[index].name + allProducts[index].timesViewed + allProducts[index].timesClicked;
+  productVoteData.textContent = allProducts[index].name + ' was viewed ' + allProducts[index].timesViewed + ' times, and received ' + allProducts[index].timesClicked + ' votes.';
   ulElement.appendChild(productVoteData);
 }
 
@@ -111,3 +120,4 @@ for(var j = 0; j < productElements.length; j++){
   console.log('this is the event listener for the click on product event');
   productElements[j].addEventListener('click', productWasClicked);
 }
+
