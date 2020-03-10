@@ -6,7 +6,7 @@ var productIndex2 = 1;
 var productIndex3 = 2;
 var allProducts = [];
 var totalClicks = 0;
-var clickRounds = 25;
+var clickRounds = 5;
 
 
 var productElements = document.getElementsByTagName('img');
@@ -20,6 +20,14 @@ function Product(name, imageUrl){
 
 }
 
+function getProductArray(nameofProperty){
+  var answer = [];
+  for(var i = 0; i < allProducts.length; i++){
+    answer[i] = allProducts[i][nameofProperty];
+  }
+  console.log(answer);
+  return answer;
+}
 
 
 new Product('Bag', 'img/bag.jpg');
@@ -87,9 +95,12 @@ function productWasClicked(event){
   if(totalClicks >= clickRounds){
     for (var i = 0; i < allProducts.length; i++){
       productData(i);
+      renderClickedChart();
+      renderViewedChart();
     }
-    for (var k = 0; k < productElements.length; k++)
+    for (var k = 0; k < productElements.length; k++){
       productElements[k].removeEventListener('click', productWasClicked);
+    }
   }
 }
 
@@ -102,16 +113,122 @@ function productData(index){
 }
 
 
-
-
-
-
-
-
-
-
 for(var j = 0; j < productElements.length; j++){
   console.log('this is the event listener for the click on product event');
   productElements[j].addEventListener('click', productWasClicked);
 }
 
+
+function renderClickedChart(){
+  var ctx = document.getElementById('myChart');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: getProductArray('name'),
+      datasets: [{
+        label: '# of Votes per Product',
+        data: getProductArray('timesClicked'),
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            stepSize: 1,
+            min: 0,
+            max: 10,
+          }
+        }]
+      }
+    }
+  });
+}
+
+function renderViewedChart(){
+  var ctx = document.getElementById('myViewedChart');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: getProductArray('name'),
+      datasets: [{
+        label: '# of Product Views',
+        data: getProductArray('timesClicked'),
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            stepSize: 1,
+            min: 0,
+            max: 10,
+          }
+        }]
+      }
+    }
+  });
+}
