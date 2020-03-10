@@ -91,14 +91,6 @@ function productWasClicked(event){
     for (var k = 0; k < productElements.length; k++)
       productElements[k].removeEventListener('click', productWasClicked);
   }
-
-
-//   if(totalClicks >= clickRounds){
-//     var voteList = document.getElementById('voteList')[0];
-//     if(voteList.firstElementChild){
-//       voteList.firstElementChild.remove();
-//     }
-//   }
 }
 
 var ulElement = document.getElementById('voteList');
