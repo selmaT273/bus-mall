@@ -48,8 +48,16 @@ aside {
     padding: 10px;
 }
 
-canvas {
-    display: block;
-    height: 400px;
-    width: 400px;
+
+footer, #mychart {
+    margin-bottom: 50px;
+    background-color: whitesmoke;
+    padding: 30px;
+    width: 700px;
+    height: 700px;
+    margin: 30px auto 30px auto;
+}
+
+footer {
+    display: none;
 }
