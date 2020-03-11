@@ -12,6 +12,12 @@ img {
 
 
 }
+
+header {
+    border: white solid 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 body {
     width: 1400px;
     margin: 0 auto;
@@ -21,13 +27,15 @@ body {
 main {
     text-align: center;
     background-color: #B4F8C8;
+    border: white solid 8px;
 }
 
 h1 {
     font-size: 48px;
+    font-weight: bold;
+    font-family: 'Bellota', cursive;
     color: white;
     font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -40,6 +48,8 @@ ul {
 }
 
 aside {
+    border: white solid 8px;
+    font-family: 'Quicksand', sans-serif;
     height: 500px;
     width: 800px;
     background-color: #A0E7E5;
@@ -60,4 +70,8 @@ footer, #mychart {
 
 footer {
     display: none;
+}
+
+li {
+    padding: 3px;
 }
