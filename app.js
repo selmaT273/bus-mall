@@ -6,7 +6,7 @@ var productIndex2 = 1;
 var productIndex3 = 2;
 var allProducts = [];
 var totalClicks = 0;
-var clickRounds = 25;
+var clickRounds = 5;
 
 
 var productElements = document.getElementsByTagName('img');
@@ -67,9 +67,9 @@ if(savedProductString){
   new Product('Wine Glass', 'img/wine-glass.jpg');
 }
 
-allProducts[0].timesViewed = 1;
-allProducts[1].timesViewed = 1;
-allProducts[2].timesViewed = 1;
+allProducts[0].timesViewed++;
+allProducts[1].timesViewed++;
+allProducts[2].timesViewed++;
 
 function productWasClicked(event){
   totalClicks++;
