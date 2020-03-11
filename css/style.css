@@ -49,6 +49,7 @@ ul {
 
 aside {
     border: white solid 8px;
+    font-family: 'Quicksand', sans-serif;
     height: 500px;
     width: 800px;
     background-color: #A0E7E5;
@@ -69,4 +70,8 @@ footer, #mychart {
 
 footer {
     display: none;
+}
+
+li {
+    padding: 3px;
 }
