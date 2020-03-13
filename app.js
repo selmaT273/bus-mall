@@ -6,7 +6,7 @@ var productIndex2 = 1;
 var productIndex3 = 2;
 var allProducts = [];
 var totalClicks = 0;
-var clickRounds = 5;
+var clickRounds = 25;
 
 
 var productElements = document.getElementsByTagName('img');
