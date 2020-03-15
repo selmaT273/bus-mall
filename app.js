@@ -1,6 +1,7 @@
 'use strict';
 console.log('this is connected');
 
+// Gloabl variables
 var productIndex1 = 0;
 var productIndex2 = 1;
 var productIndex3 = 2;
@@ -8,9 +9,10 @@ var allProducts = [];
 var totalClicks = 0;
 var clickRounds = 25;
 
-
+// Assigns global variable to 3 images shown on page to be used below for event listener
 var productElements = document.getElementsByTagName('img');
 
+// Constructor function to execute for each new product
 function Product(name, imageUrl, timesClicked, timesViewed){
   this.name = name;
   this.imageUrl = imageUrl;
@@ -38,7 +40,7 @@ function getProductArray(nameofProperty){
 
 var savedProductString = localStorage.getItem('savedProduct');
 
-
+// Converts to a string so that it can be saved to localStorage
 if(savedProductString){
   var arrayOfNotProductObjects = JSON.parse(savedProductString);
 
@@ -67,6 +69,7 @@ if(savedProductString){
   new Product('Wine Glass', 'img/wine-glass.jpg');
 }
 
+// Includes the view at page load in data for times viewed
 allProducts[0].timesViewed++;
 allProducts[1].timesViewed++;
 allProducts[2].timesViewed++;
@@ -82,6 +85,7 @@ function productWasClicked(event){
     allProducts[productIndex3].timesClicked++;
   }
 
+  // Logic to randomize 3 unique products
   var nextProductIndex1 = Math.floor(Math.random() * allProducts.length);
   while((nextProductIndex1 === productIndex1) || (nextProductIndex1 === productIndex2) || (nextProductIndex1 === productIndex3)){
     nextProductIndex1 = Math.floor(Math.random() * allProducts.length);
@@ -130,13 +134,12 @@ function productData(index){
   ulElement.appendChild(productVoteData);
 }
 
-
+// Event listener for the click on product event
 for(var j = 0; j < productElements.length; j++){
-  console.log('this is the event listener for the click on product event');
   productElements[j].addEventListener('click', productWasClicked);
 }
 
-
+// Renders bar chart for number of views and number of votes per product
 function renderClickedChart(){
   var ctx = document.getElementById('myChart');
   var myChart = new Chart(ctx, {
